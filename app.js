@@ -22,7 +22,7 @@ const users = require('./routes/users');
 
 const app = express();
 /********************************
-lets fix 404 error when refreshing browser in SPA(vuejs)
+  lets fix 404 error when refreshing browser in SPA(vuejs)
 ********************************/
 const history = require('connect-history-api-fallback');
 const connect = require('connect');
