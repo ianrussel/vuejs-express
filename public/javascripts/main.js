@@ -1808,7 +1808,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log(error, 'err');
         });
         //this.getMe();
-
     },
 
     methods: {
@@ -1816,14 +1815,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var host = window.location.host;
             axios({
                 method: 'get',
-                url: host + '/images/' + code + '.png',
+                url: host + '/public/images/' + code + '.png',
                 responseType: 'stream'
             }).then(function (response) {
                 console.log(response, 'ok');
                 if (response) {
-                    return host + '/images/' + code + '.png';
+                    return host + '/public/images/' + code + '.png';
                 } else {
-                    return host + '/images/default.png';
+                    return host + '/public/images/default.png';
                 }
             }).catch(function (error) {
                 console.log(error.toString(), 'error');
