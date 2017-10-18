@@ -4,11 +4,7 @@
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <!-- <a href="index.html"> -->
-                    <!-- <img src="/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default" />  -->
-                    <!-- Project -->
-                <!-- </a> -->
-                <router-link to="/">Project</router-link>
+                <router-link to="/" class="navbar-brand">MyDailyCheatSheet</router-link>
                 <div class="menu-toggler sidebar-toggler">
                     <span></span>
                 </div>

@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <h1>{{ name }}</h1>
+        <h3 class="header">{{ name }}</h3>
         <div class="col-md-6" v-for="cheater in cheaters" v-if="showCheater">
             <!-- BEGIN PORTLET-->
             <div class="portlet light bordered">

@@ -12,10 +12,11 @@ import ThemeColor from './components/themeColor';
 
 import AddVue from './components/code/addVue';
 import Code from './components/code/Code';
+import Home from './components/code/Home';
 
 Vue.use(VueRouter, VueRouterTransition);
 
-const Home = { template: '<div>Ariba Ariba Ariba</div>' }
+// const Home = { template: '<div>Ariba Ariba Ariba</div>' }
 const routes = [
     { path: '/', component: Home },
     { path: '/addVue', component: AddVue },
