@@ -2,10 +2,9 @@
     <div class="row margin-bottom-20 stories-cont">
         <div class="col-md-12">
         <div class="title" >
-            <h1>My Daily Cheat Sheet</h1>
+            <h1>My Daily Cheat Sheet(this project is ongoing)</h1>
             <p>Oftentimes, I can't remember the command to clear cache, command to deploy project to Heroku, or generating entity in A Symfony console, So I built this little project</p>
             <h2>This Project built is with Vuejs, NodeJS/Express, MongoDB/Mongoose, ES6</h2>
-
         </div>
     </div>
         <div class="col-lg-3 col-md-6" v-for="code in codes">
