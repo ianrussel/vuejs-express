@@ -29605,7 +29605,7 @@ var render = function() {
           _c(
             "router-link",
             { staticClass: "navbar-brand", attrs: { to: "/" } },
-            [_vm._v("MyDailyCheatSheet")]
+            [_vm._v("DailyCheatSheet")]
           ),
           _vm._v(" "),
           _vm._m(0)

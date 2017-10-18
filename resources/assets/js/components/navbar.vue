@@ -4,7 +4,7 @@
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <router-link to="/" class="navbar-brand">MyDailyCheatSheet</router-link>
+                <router-link to="/" class="navbar-brand">DailyCheatSheet</router-link>
                 <div class="menu-toggler sidebar-toggler">
                     <span></span>
                 </div>
