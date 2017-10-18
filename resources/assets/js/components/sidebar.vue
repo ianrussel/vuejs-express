@@ -62,9 +62,11 @@
                         </li>
                     </ul>
                 </li>
-                <router-link to="/addVue" class="nav-link">
-                    <span class="title">Add Cheat Sheet</span>
-                </router-link>
+                <li class="nav-item active open">
+                    <router-link to="/addVue" class="nav-link">
+                        <span class="title">Add Cheat Sheet</span>
+                    </router-link>
+                </li>
             </ul>
         </div>
     </div>
