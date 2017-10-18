@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <h3 class="header">{{ name }}</h3>
+        <h3 class="header text-center" id="header">{{ name }}</h3>
         <div class="col-md-6" v-for="cheater in cheaters" v-if="showCheater">
             <!-- BEGIN PORTLET-->
             <div class="portlet light bordered">
@@ -139,5 +139,8 @@
     .code {
         background-color: #1F0A02;
         color: azure;
+    }
+    #header {
+        font-family: "cursive";
     }
 </style>

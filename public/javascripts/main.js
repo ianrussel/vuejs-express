@@ -4787,7 +4787,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.code[data-v-6c0adb4f] {\n  background-color: #1F0A02;\n  color: azure;\n}\n", ""]);
+exports.push([module.i, "\n.code[data-v-6c0adb4f] {\n  background-color: #1F0A02;\n  color: azure;\n}\n#header[data-v-6c0adb4f] {\n  font-family: \"cursive\";\n}\n", ""]);
 
 // exports
 
@@ -29160,7 +29160,9 @@ var render = function() {
     "div",
     { staticClass: "row" },
     [
-      _c("h3", { staticClass: "header" }, [_vm._v(_vm._s(_vm.name))]),
+      _c("h3", { staticClass: "header text-center", attrs: { id: "header" } }, [
+        _vm._v(_vm._s(_vm.name))
+      ]),
       _vm._v(" "),
       _vm._l(_vm.cheaters, function(cheater) {
         return _vm.showCheater
