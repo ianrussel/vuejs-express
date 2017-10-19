@@ -109,13 +109,20 @@
                     name: this.name,
                     id: this.id
                 })
-                .then(function(response) {
-
+                .then((response)=> {
+                    if (response.data === 'notlogin') {
+                        // alert("hey baby");
+                        // return false;
+                        this.$router.push('/users/login')
+                        bus.$emit('show');
+                    } else {
+                        bus.$emit('show');
+                    }
                 })
                 .catch((error) => {
                     console.log(error, 'error');
                 })
-                bus.$emit('show');
+                //bus.$emit('show');
             }
         }
     }

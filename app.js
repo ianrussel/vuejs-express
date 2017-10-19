@@ -19,6 +19,7 @@ const session = require('express-session');
 const cheat = require('./routes/cheats');
 const index = require('./routes/index');
 const users = require('./routes/users');
+const auth = require('./routes/auth');
 
 const app = express();
 /********************************
@@ -60,15 +61,18 @@ app.use(expressValidator());
 /***************************************
 passport
 ***************************************/
-app.use(session({ secret: 'iloveyouianrussell'}));
+app.use(session({
+	secret: 'iloveyouianrussell',
+	resave: true,
+	saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());//persistent login session
-require('./routes/routes.js')(app, passport);
-require('./config/passport')(passport); // pass passport for configuration
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/cheats', cheat);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -87,5 +91,16 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+var cors = require('cors');
+var whitelist = [
+    'http://0.0.0.0:9000',
+];
+var corsOptions = {
+    origin: function(origin, callback){
+        var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+        callback(null, originIsWhitelisted);
+    },
+    credentials: true
+};
+app.use(cors(corsOptions));
 module.exports = app;

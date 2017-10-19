@@ -35,6 +35,18 @@ router.post('/deleteCheater', cheat_controller.deleteCheater);
 /***************************
 edit cheater
 ****************************/
-router.post('/editvueform', cheat_controller.editCheater);
+router.post('/editvueform', ensureAuthenticated, cheat_controller.editCheater);
 
+// router.get('/', ensureAuthenticated, function(req, res, next) {
+//   res.render('user', { user: req.user });
+// });
+
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    console.log("not login baby")
+    res.json('notlogin');
+    //res.redirect('/login')
+}
 module.exports = router;

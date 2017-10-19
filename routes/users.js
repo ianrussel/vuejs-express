@@ -1,10 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
-const user_controller = require('../controllers/userController');
+//const user_controller = require('../controllers/userController');
 
-router.get('/', user_controller.index);
+/******************
+GET users listing
+******************/
+router.get('/', ensureAuthenticated, function(req, res, next) {
+  res.render('user', { user: req.user });
+});
 
-router.get('/signup', user_controller.signup);
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login')
+}
 
 module.exports = router;
