@@ -113,7 +113,7 @@
                     if (response.data === 'notlogin') {
                         // alert("hey baby");
                         // return false;
-                        this.$router.push('/users/login')
+                        //this.$router.push('/users/login')
                         bus.$emit('show');
                     } else {
                         bus.$emit('show');

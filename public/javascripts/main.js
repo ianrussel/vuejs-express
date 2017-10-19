@@ -2068,7 +2068,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         submit: function submit() {
-            var _this = this;
 
             axios.post(this.editUrl, {
                 title: this.title,
@@ -2080,7 +2079,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (response.data === 'notlogin') {
                     // alert("hey baby");
                     // return false;
-                    _this.$router.push('/users/login');
+                    //this.$router.push('/users/login')
                     bus.$emit('show');
                 } else {
                     bus.$emit('show');
