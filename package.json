@@ -21,6 +21,8 @@
   "author": "ian.russel@yahoo.com",
   "license": "ISC",
   "dependencies": {
+    "EventEmitter": "^1.0.0",
+    "auth0-js": "^8.10.1",
     "axios": "^0.16.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
@@ -56,5 +58,8 @@
     "vue-router": "^3.0.1",
     "vue-router-transition": "^1.0.9",
     "vuex": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-preset-stage-0": "^6.24.1"
   }
 }

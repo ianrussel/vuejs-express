@@ -15,6 +15,7 @@ const multer = require('multer');
 const upload = multer();
 const passport = require('passport');
 const session = require('express-session');
+const cors = require('cors');
 
 const cheat = require('./routes/cheats');
 const index = require('./routes/index');
@@ -28,7 +29,9 @@ const app = express();
 const history = require('connect-history-api-fallback');
 const connect = require('connect');
 
-app.use(history());
+app.use(history({
+	index: 'views/layout./twig'
+}));
 
 
 /********************************
@@ -91,16 +94,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-var cors = require('cors');
-var whitelist = [
-    'http://0.0.0.0:9000',
-];
-var corsOptions = {
-    origin: function(origin, callback){
-        var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-        callback(null, originIsWhitelisted);
-    },
-    credentials: true
-};
-app.use(cors(corsOptions));
+
+
+app.use(cors());
 module.exports = app;

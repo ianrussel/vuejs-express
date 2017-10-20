@@ -81,11 +81,26 @@
                 </div>
             </div>
         </div>
+        <h4 v-if="authenticated">
+            You are logged in!
+        </h4>
+        <h4 v-if="!authenticated">
+            You are not logged in! Please <a @click="auth.login()">Log In</a> to continue.
+        </h4>
     </div>
 </template>
 <script>
+    import AuthService from '../../auth/AuthService'
+
+    const auth = new AuthService()
+
+    const { login, logout, authenticated, authNotifier } = auth
+
     export default {
         data() {
+            authNotifier.on('authChange', authState => {
+                this.authenticated = authState.authenticated
+            })
             return {
                 title: this.cheater.title,
                 description: this.cheater.description,
@@ -95,12 +110,18 @@
                 editUrl: '/cheats/editvueform',
                 cheater_names: '',
                 initial_cheater_names: ['symfony','laravel','vuejs'],
+                auth,
+                authenticated
             }
         },
         props: ['cheater'],
 
         methods: {
             submit() {
+                if (!this.authenticated) {
+
+                    this.login()
+                }
 
                 axios.post(this.editUrl, {
                     title: this.title,
@@ -110,20 +131,23 @@
                     id: this.id
                 })
                 .then((response)=> {
-                    if (response.data === 'notlogin') {
-                        // alert("hey baby");
-                        // return false;
-                        //this.$router.push('/users/login')
-                        bus.$emit('show');
-                    } else {
-                        bus.$emit('show');
-                    }
+                    // if (response.data === 'notlogin') {
+                    //     // alert("hey baby");
+                    //     // return false;
+                    //     //this.$router.push('/users/login')
+                    //     //bus.$emit('show');
+                    //     login();
+                    // } else {
+                    //     bus.$emit('show');
+                    // }
                 })
                 .catch((error) => {
                     console.log(error, 'error');
                 })
-                //bus.$emit('show');
-            }
+                bus.$emit('show');
+            },
+            login,
+            logout
         }
     }
 </script>

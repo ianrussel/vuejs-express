@@ -35,7 +35,7 @@ router.post('/deleteCheater', cheat_controller.deleteCheater);
 /***************************
 edit cheater
 ****************************/
-router.post('/editvueform', ensureAuthenticated, cheat_controller.editCheater);
+router.post('/editvueform', cheat_controller.editCheater);
 
 // router.get('/', ensureAuthenticated, function(req, res, next) {
 //   res.render('user', { user: req.user });
