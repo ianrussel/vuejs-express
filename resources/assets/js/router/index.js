@@ -34,7 +34,7 @@ const routes = [
         component: Login
     },
     {
-        path: '/github/callback/',
+        path: '/github/callback',
         name: 'Callback',
         //redirect: { name: 'Home'}
         component: Callback

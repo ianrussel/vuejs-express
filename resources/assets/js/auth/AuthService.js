@@ -17,7 +17,8 @@ export default class AuthService {
     auth0 = new auth0.WebAuth({
         domain: AUTH_CONFIG.domain,
         clientID: AUTH_CONFIG.clientId,
-        redirectUri: AUTH_CONFIG.callbackURL,
+        redirectUri: AUTH_CONFIG.callbackUrl,
+        //redirectUri: 'http://localhost:9000/github/callback',
         audience: `https://${AUTH_CONFIG.domain}/userinfo`,
         responseType: 'token id_token',
         scope: 'openid'

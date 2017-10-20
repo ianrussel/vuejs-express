@@ -5942,10 +5942,10 @@ var login = auth.login,
 
     methods: {
         submit: function submit() {
-            // if (!this.authenticated) {
-            //
-            //     this.login()
-            // }
+            if (!this.authenticated) {
+
+                this.login();
+            }
 
             axios.post(this.editUrl, {
                 title: this.title,
@@ -39106,7 +39106,29 @@ var render = function() {
           ])
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _vm.authenticated
+      ? _c("h4", [_vm._v("\n        You are logged in!\n    ")])
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.authenticated
+      ? _c("h4", [
+          _vm._v("\n        You are not logged in! Please "),
+          _c(
+            "a",
+            {
+              on: {
+                click: function($event) {
+                  _vm.auth.login()
+                }
+              }
+            },
+            [_vm._v("Log In")]
+          ),
+          _vm._v(" to continue.\n    ")
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -54697,7 +54719,8 @@ var AuthService = function () {
         this.auth0 = new __WEBPACK_IMPORTED_MODULE_0_auth0_js___default.a.WebAuth({
             domain: __WEBPACK_IMPORTED_MODULE_1__auth0_variables__["a" /* AUTH_CONFIG */].domain,
             clientID: __WEBPACK_IMPORTED_MODULE_1__auth0_variables__["a" /* AUTH_CONFIG */].clientId,
-            redirectUri: __WEBPACK_IMPORTED_MODULE_1__auth0_variables__["a" /* AUTH_CONFIG */].callbackURL,
+            redirectUri: __WEBPACK_IMPORTED_MODULE_1__auth0_variables__["a" /* AUTH_CONFIG */].callbackUrl,
+            //redirectUri: 'http://localhost:9000/github/callback',
             audience: 'https://' + __WEBPACK_IMPORTED_MODULE_1__auth0_variables__["a" /* AUTH_CONFIG */].domain + '/userinfo',
             responseType: 'token id_token',
             scope: 'openid'
@@ -54778,10 +54801,8 @@ var AuthService = function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AUTH_CONFIG; });
 var AUTH_CONFIG = {
     clientId: 'yxFTYDFjVTO5K9IQm2JJAxpblxLA1RJq',
-    //clientSecret: 'JEiyLtnPLnPHqRh9XH4EYI9dJZP9ZqHAWEEsnww0RdPLsb-JtnHg6D3ZYlArDxBJ',
     domain: 'cheatsheet.auth0.com',
-    callbackURL: 'http://localhost:9000/github/callback/',
-    //callbackURL: window.location.origin + '/',
+    callbackUrl: 'https://fierce-brushlands-36765.herokuapp.com/github/callback',
     apiUrl: 'https://cheatsheet.auth0.com/api/v2/'
 };
 
@@ -55542,7 +55563,7 @@ var NotFound = { template: '<div>Ariba Ariba Ariba Not Found</div>'
     path: '/users/login',
     component: __WEBPACK_IMPORTED_MODULE_4__components_code_login___default.a
 }, {
-    path: '/github/callback/',
+    path: '/github/callback',
     name: 'Callback',
     //redirect: { name: 'Home'}
     component: __WEBPACK_IMPORTED_MODULE_5__components_code_callback___default.a
