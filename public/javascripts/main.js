@@ -5942,10 +5942,10 @@ var login = auth.login,
 
     methods: {
         submit: function submit() {
-            if (!this.authenticated) {
-
-                this.login();
-            }
+            // if (!this.authenticated) {
+            //
+            //     this.login()
+            // }
 
             axios.post(this.editUrl, {
                 title: this.title,
@@ -39106,29 +39106,7 @@ var render = function() {
           ])
         ])
       ])
-    ]),
-    _vm._v(" "),
-    _vm.authenticated
-      ? _c("h4", [_vm._v("\n        You are logged in!\n    ")])
-      : _vm._e(),
-    _vm._v(" "),
-    !_vm.authenticated
-      ? _c("h4", [
-          _vm._v("\n        You are not logged in! Please "),
-          _c(
-            "a",
-            {
-              on: {
-                click: function($event) {
-                  _vm.auth.login()
-                }
-              }
-            },
-            [_vm._v("Log In")]
-          ),
-          _vm._v(" to continue.\n    ")
-        ])
-      : _vm._e()
+    ])
   ])
 }
 var staticRenderFns = [
