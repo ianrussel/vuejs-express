@@ -56,7 +56,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item start ">
-                            <router-link :to="{path: '/puta/' + name }" class="nav-link">
+                            <router-link :to="{path: name }" class="nav-link">
                                 <span class="title">{{ name }} cheatsheet</span>
                             </router-link>
                         </li>

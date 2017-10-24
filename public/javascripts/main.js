@@ -2132,11 +2132,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.show = true;
                     return false;
                 }
+                _this.show = false;
                 bus.$emit('show');
             }).catch(function (error) {
                 console.log(error, 'error');
             });
-            //bus.$emit('show');
+            bus.$emit('show');
         }
     }
 });
@@ -28769,7 +28770,7 @@ var render = function() {
                       "router-link",
                       {
                         staticClass: "nav-link",
-                        attrs: { to: { path: "/puta/" + name } }
+                        attrs: { to: { path: name } }
                       },
                       [
                         _c("span", { staticClass: "title" }, [
@@ -29849,16 +29850,12 @@ var render = function() {
               "div",
               { staticClass: "photo" },
               [
-                _c(
-                  "router-link",
-                  { attrs: { to: { path: "/puta/" + code } } },
-                  [
-                    _c("img", {
-                      staticClass: "img-responsive",
-                      attrs: { src: "/images/" + code + ".png", alt: code }
-                    })
-                  ]
-                )
+                _c("router-link", { attrs: { to: { path: code } } }, [
+                  _c("img", {
+                    staticClass: "img-responsive",
+                    attrs: { src: "/images/" + code + ".png", alt: code }
+                  })
+                ])
               ],
               1
             ),
@@ -45428,7 +45425,7 @@ var NotFound = { template: '<div>Ariba Ariba Ariba Not Found</div>'
     component: __WEBPACK_IMPORTED_MODULE_1__components_code_addVue___default.a
     //beforeEnter: Auth.requireAuth
 }, {
-    path: '/puta/:name',
+    path: '/:name',
     component: __WEBPACK_IMPORTED_MODULE_2__components_code_Code___default.a
 }, {
     path: '/google',

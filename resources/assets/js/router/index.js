@@ -20,7 +20,7 @@ const routes = [
         //beforeEnter: Auth.requireAuth
     },
     {
-        path: '/puta/:name',
+        path: '/:name',
         component: Code
     },
     {

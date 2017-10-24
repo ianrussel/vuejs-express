@@ -130,12 +130,13 @@
                         this.show = true;
                         return false;
                     }
+                    this.show = false;
                     bus.$emit('show');
                 })
                 .catch((error) => {
                     console.log(error, 'error');
                 })
-                //bus.$emit('show');
+                bus.$emit('show');
             }
         }
     }
