@@ -10,7 +10,6 @@ import footerComponent from './components/footer';
 import ThemeColor from './components/themeColor';
 
 
-
 const vm = new Vue({
     delimiters: ['<tai','tai>'],
     el: "#app",

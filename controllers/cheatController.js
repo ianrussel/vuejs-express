@@ -111,3 +111,7 @@ exports.editCheater = function(req, res, next) {
         console.log("successs")
     });
 }
+
+exports.login = function(req, res, next) {
+    console.log(req.body,'body')
+}

@@ -19,8 +19,7 @@ const cors = require('cors');
 
 const cheat = require('./routes/cheats');
 const index = require('./routes/index');
-const users = require('./routes/users');
-const auth = require('./routes/auth');
+const fs = require('fs');
 
 const app = express();
 /********************************
@@ -29,10 +28,13 @@ const app = express();
 const history = require('connect-history-api-fallback');
 const connect = require('connect');
 
-app.use(history({
-	index: 'views/layout./twig'
-}));
+app.use(history());
 
+//
+// const jwtCheck = jwt({
+//   secret: 'JEiyLtnPLnPHqRh9XH4EYI9dJZP9ZqHAWEEsnww0RdPLsb-JtnHg6D3ZYlArDxBJ',
+//   audience: 'https://cheatsheet.auth0.com/api/v2/'
+// })
 
 /********************************
 connect to database
@@ -72,17 +74,19 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());//persistent login session
 
-app.use('/', index);
-app.use('/users', users);
+app.use('/index', index);
+// app.use('/users', users);
 app.use('/cheats', cheat);
-app.use('/auth', auth);
-
+// app.use('/auth', auth);
+require('./routes/routes.js')(app, passport);
+require('./config/passport')(passport); // pass passport for configuration
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -94,6 +98,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 
 app.use(cors());

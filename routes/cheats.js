@@ -35,18 +35,18 @@ router.post('/deleteCheater', cheat_controller.deleteCheater);
 /***************************
 edit cheater
 ****************************/
-router.post('/editvueform', cheat_controller.editCheater);
+router.post('/editvueform', ensureAuthenticated, cheat_controller.editCheater);
 
 // router.get('/', ensureAuthenticated, function(req, res, next) {
 //   res.render('user', { user: req.user });
 // });
-
+router.post('/login', cheat_controller.login);
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
+        console.log("login")
         return next();
     }
     console.log("not login baby")
-    res.json('notlogin');
-    //res.redirect('/login')
+    res.json('yawa');
 }
 module.exports = router;

@@ -81,26 +81,11 @@
                 </div>
             </div>
         </div>
-        <h4 v-if="authenticated">
-            You are logged in!
-        </h4>
-        <h4 v-if="!authenticated">
-            You are not logged in! Please <a @click="auth.login()">Log In</a> to continue.
-        </h4>
     </div>
 </template>
 <script>
-    import AuthService from '../../auth/AuthService'
-
-    const auth = new AuthService()
-
-    const { login, logout, authenticated, authNotifier } = auth
-
     export default {
         data() {
-            authNotifier.on('authChange', authState => {
-                this.authenticated = authState.authenticated
-            })
             return {
                 title: this.cheater.title,
                 description: this.cheater.description,
@@ -110,19 +95,28 @@
                 editUrl: '/cheats/editvueform',
                 cheater_names: '',
                 initial_cheater_names: ['symfony','laravel','vuejs'],
-                auth,
-                authenticated
+                show: false,
+                email: '',
+                password: ''
             }
         },
         props: ['cheater'],
 
         methods: {
+            submitfuck() {
+                alert('fuck')
+                axios.post('/cheats/login', {
+                    email: this.email,
+                    password: this.password
+                })
+                .then((response) => {
+                    console.log(response)
+                })
+                .catch((error) => {
+                    console.log(error.toString())
+                })
+            },
             submit() {
-                if (!this.authenticated) {
-
-                    this.login()
-                }
-
                 axios.post(this.editUrl, {
                     title: this.title,
                     description: this.description,
@@ -131,23 +125,18 @@
                     id: this.id
                 })
                 .then((response)=> {
-                    // if (response.data === 'notlogin') {
-                    //     // alert("hey baby");
-                    //     // return false;
-                    //     //this.$router.push('/users/login')
-                    //     //bus.$emit('show');
-                    //     login();
-                    // } else {
-                    //     bus.$emit('show');
-                    // }
+                    if (response.data === 'yawa') {
+                        console.log(response.data)
+                        this.show = true;
+                        return false;
+                    }
+                    bus.$emit('show');
                 })
                 .catch((error) => {
                     console.log(error, 'error');
                 })
-                bus.$emit('show');
-            },
-            login,
-            logout
+                //bus.$emit('show');
+            }
         }
     }
 </script>
