@@ -50532,7 +50532,22 @@ var render = function() {
                       return _c(
                         "tr",
                         {
-                          directives: [{ name: "tippy", rawName: "v-tippy" }],
+                          directives: [
+                            {
+                              name: "tippy",
+                              rawName: "v-tippy",
+                              value: {
+                                position: "top",
+                                animation: "fade",
+                                duration: 1000,
+                                size: "big",
+                                theme: "transparent",
+                                arrow: true
+                              },
+                              expression:
+                                "{position: 'top', animation: 'fade', duration: 1000, size: 'big', theme:'transparent', arrow: true}"
+                            }
+                          ],
                           attrs: { "data-messageid": "19", title: bug.comment }
                         },
                         [
