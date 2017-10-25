@@ -1,6 +1,10 @@
 <template>
     <div class="row">
+<<<<<<< HEAD
         <h3 class="header text-center" id="header">{{ name }}</h3>
+=======
+        <h1>{{ name }}</h1>
+>>>>>>> df42bc28df6e66b12b0dfca331d7fb9a552f9987
         <div class="col-md-6" v-for="cheater in cheaters" v-if="showCheater">
             <!-- BEGIN PORTLET-->
             <div class="portlet light bordered">
@@ -140,7 +144,10 @@
         background-color: #1F0A02;
         color: azure;
     }
+<<<<<<< HEAD
     #header {
         font-family: "cursive";
     }
+=======
+>>>>>>> df42bc28df6e66b12b0dfca331d7fb9a552f9987
 </style>
