@@ -1,6 +1,7 @@
 const Cheaters = require('../models/cheaters');
+const Bugs = require('../models/bugs');
 const lodash = require('lodash');
-
+const moment = require('moment');
 
 /*********************************************
 display all cheaters
@@ -45,6 +46,7 @@ exports.create_cheat = function(req, res, next) {
         code: req.body.code,
         name: req.body.name,
         created_by: 'me'
+        //date_created:
     });
 
     console.log('Cheaters', cheater);
@@ -111,7 +113,59 @@ exports.editCheater = function(req, res, next) {
         console.log("successs")
     });
 }
+/*********************************
+add Bug
+*********************************/
+exports.addBug = function(req, res, next) {
+    console.log(req.body,'bugs');
+    req.checkBody('title', 'Title must not be empty').notEmpty();
+    req.checkBody('name', 'Name must not be empty').notEmpty();
+    req.checkBody('fullname', 'Fullname name must not be empty').notEmpty();
+    req.checkBody('comment', 'Comment must not be empty').notEmpty();
 
+    //sanitize
+    req.sanitize('title').escape();
+    req.sanitize('name').escape();
+    req.sanitize('fullname').escape();
+    req.sanitize('comment').escape();
+
+    req.sanitize('title').trim();
+    req.sanitize('name').trim();
+    req.sanitize('fullname').trim();
+    req.sanitize('comment').trim();
+    const bugs = new Bugs(
+        {
+            title: req.body.title,
+            name: req.body.name,
+            fullname: req.body.fullname,
+            comment: req.body.comment,
+            date_created: moment().format('YYYY-MM-DD')
+        }
+    )
+    let errors = req.validationErrors();
+    if (errors) {
+        console.log(errors, 'error occured');
+    } else {
+        bugs.save(function(err) {
+            if (err) {
+                return next(err);
+            }
+            console.log("o so ok")
+            res.json('fuck');
+        })
+    }
+}
+/********************************
+get all bugs
+********************************/
+exports.getBugs = function(req, res, next) {
+    Bugs.find({}, '_id title name fullname comment date_created', {sort: {'_id': -1}}, function(err, bugs) {
+        if (err) {
+            return next(err);
+        }
+        res.json(bugs);
+    })
+}
 exports.login = function(req, res, next) {
     console.log(req.body,'body')
 }

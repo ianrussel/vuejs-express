@@ -10,13 +10,13 @@
         <div class="col-lg-3 col-md-6" v-for="code in codes">
             <div class="portlet light">
                 <div class="photo">
-                    <router-link  :to="{path: code }">
+                    <router-link  :to="{path: '/puta/' + code }">
                         <img :src="'/images/' + code + '.png'" v-bind:alt="code" class="img-responsive" >
                         <!-- <img :src="getMe(code)" v-bind:alt="code" class="img-responsive" > -->
                     </router-link>
                 </div>
                 <div class="title">
-                    <router-link  :to="{path: '/' + code }">
+                    <router-link  :to="{path: '/puta/' + code }">
                         <span> {{ code }} </span>
                     </router-link>
                 </div>

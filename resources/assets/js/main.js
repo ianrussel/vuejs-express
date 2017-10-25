@@ -10,7 +10,9 @@ import contents from './components/content';
 import footerComponent from './components/footer';
 import ThemeColor from './components/themeColor';
 
-
+Vue.filter('formatDate', function(date) {
+    return moment(date).format('MMMM Do YYYY');
+})
 const vm = new Vue({
     delimiters: ['<tai','tai>'],
     el: "#app",

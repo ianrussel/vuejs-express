@@ -56,7 +56,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item start ">
-                            <router-link :to="{path: name }" class="nav-link">
+                            <router-link :to="{path: '/puta/' + name }" class="nav-link">
                                 <span class="title">{{ name }} cheatsheet</span>
                             </router-link>
                         </li>
@@ -67,6 +67,26 @@
                         <span class="title">Add Cheat Sheet</span>
                     </router-link>
                 </li>
+                <li class="nav-item start ">
+                    <router-link to="/reportBug" class="nav-link">
+                        <i class="fa fa-bug"></i>
+                        <span class="title">Report Bug</span>
+                    </router-link>
+                </li>
+                <!-- <li class="nav-item start">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <span class="title">Bug</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start ">
+                            <router-link to="/reportBug" class="nav-link">
+                                <i class="fa fa-bug"></i>
+                                <span class="title">Report Bug</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </li> -->
             </ul>
         </div>
     </div>

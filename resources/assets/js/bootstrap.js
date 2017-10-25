@@ -24,7 +24,7 @@ try {
 /**
  * moment
  */
-// window.moment = require('moment');
+window.moment = require('moment');
 //window.moment_timezone = require('moment-timezone');
 //moment_timezone.tz("America/Los_Angeles").format();
 //moment.tz.setDefault("America/Los_Angeles");

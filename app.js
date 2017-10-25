@@ -28,13 +28,10 @@ const app = express();
 const history = require('connect-history-api-fallback');
 const connect = require('connect');
 
-app.use(history());
+app.use(history({
+	verbose: true
+}));
 
-//
-// const jwtCheck = jwt({
-//   secret: 'JEiyLtnPLnPHqRh9XH4EYI9dJZP9ZqHAWEEsnww0RdPLsb-JtnHg6D3ZYlArDxBJ',
-//   audience: 'https://cheatsheet.auth0.com/api/v2/'
-// })
 
 /********************************
 connect to database

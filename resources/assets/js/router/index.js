@@ -4,10 +4,10 @@ import AddVue from '../components/code/addVue';
 import Code from '../components/code/Code';
 import Home from '../components/code/Home';
 import Google from '../components/code/Google';
-Vue.use(VueRouter);
+import Bug from '../components/code/Bug';
+const NotFound = { template: '<div>Ariba Ariba Ariba Not Found</div>' };
 
-const NotFound = { template: '<div>Ariba Ariba Ariba Not Found</div>' }
-//const Google = { template: '<div> <h1>Google </h1></div>'}
+Vue.use(VueRouter);
 const routes = [
     {
         path: '/',
@@ -20,7 +20,11 @@ const routes = [
         //beforeEnter: Auth.requireAuth
     },
     {
-        path: '/:name',
+        path: '/reportBug',
+        component: Bug
+    },
+    {
+        path: '/puta/:name',
         component: Code
     },
     {
@@ -31,6 +35,7 @@ const routes = [
         path: '/*',
         component: NotFound
     }
+
 ]
 const router = new VueRouter({
     mode: 'history',

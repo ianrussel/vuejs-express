@@ -65,6 +65,16 @@ router.post('/editvueform',auth, cheat_controller.editCheater);
 // router.get('/', ensureAuthenticated, function(req, res, next) {
 //   res.render('user', { user: req.user });
 // });
+
+/****************************
+add Bug
+****************************/
+router.post('/addBug', cheat_controller.addBug);
+/***************************
+get all bugs
+***************************/
+router.get('/getAllBugs', cheat_controller.getBugs);
+
 router.post('/login', cheat_controller.login);
 
 module.exports = router;
