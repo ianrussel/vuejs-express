@@ -56,15 +56,17 @@
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item start ">
-                            <router-link :to="{path: '/' + name }" class="nav-link">
+                            <router-link :to="{path: name }" class="nav-link">
                                 <span class="title">{{ name }} cheatsheet</span>
                             </router-link>
                         </li>
                     </ul>
                 </li>
-                <router-link to="/addVue" class="nav-link">
-                    <span class="title">Add Cheat Sheet</span>
-                </router-link>
+                <li class="nav-item active open">
+                    <router-link to="/addVue" class="nav-link">
+                        <span class="title">Add Cheat Sheet</span>
+                    </router-link>
+                </li>
             </ul>
         </div>
     </div>
