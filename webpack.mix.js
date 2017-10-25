@@ -1,21 +1,6 @@
 const mix = require('laravel-mix');
 
 mix.js('resources/assets/js/main.js', 'public/javascripts')
-	// .combine([//dynamic_live
-	// 		// 'public/javascripts/jquery.min.js',
-	// 		'public/javascripts/bootstrap.js',
-	// 		'public/javascripts/js.cookie.min.js',
-	// 		'public/javascripts/bootstrap-hover-dropdown.js',
-	// 		'public/javascripts/jquery.slimscroll.js',
-	// 		'public/javascripts/jquery.blockui.min.js',
-	// 		'public/javascripts/bootstrap-switch.js',
-	// 		'public/javascripts/app.js',
-	// 		'public/javascripts/layout.js',
-	// 		'public/javascripts/demo.js',
-	// 		'public/javascripts/quick-sidebar.js',
-	// 		],
-	// 	'public/javascripts/combined.min.js'
-	// 	)
 	.sass('resources/assets/sass/app.scss', 'public/css')
 	.copy('public/assets/global/plugins/font-awesome/css/font-awesome.css', 'public/css')
 	.copy('public/assets/global/plugins/simple-line-icons/simple-line-icons.css', 'public/css')

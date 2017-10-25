@@ -1,22 +1,28 @@
+require('dotenv').config();
+
 const express = require('express');
 
 const router = express.Router();
 
-var basicAuth = require('basic-auth');
+const  basicAuth = require('basic-auth');
+const password = process.env.PASS;
+const username = process.env.USER;
 
 var auth = function (req, res, next) {
   function unauthorized(res) {
     res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-    return res.send(401);
+    return res.sendStatus(401);
   };
 
   var user = basicAuth(req);
 
   if (!user || !user.name || !user.pass) {
+    console.log(process.env.USERNAME, 'usernameyeahs');
     return unauthorized(res);
   };
 
-  if (user.name === 'ian' && user.pass === 'adem') {
+  if (user.name === username && user.pass === password) {
+    console.log(username, 'username')
     return next();
   } else {
     return unauthorized(res);
