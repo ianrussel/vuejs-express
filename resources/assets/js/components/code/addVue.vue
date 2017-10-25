@@ -123,7 +123,7 @@
                     name: this.name
                 })
                 .then((response) => {
-                    this.$router.push(this.name)
+                    this.$router.push('/puta/' + this.name)
                 })
                 .catch((error) => {
                     console.log(error, 'error');

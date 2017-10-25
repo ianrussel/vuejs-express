@@ -17,7 +17,7 @@
                 </div>
                 <div class="title">
                     <router-link  :to="{path: '/puta/' + code }">
-                        <span> {{ code }} </span>
+                        <!-- <span> {{ code }} </span> -->
                     </router-link>
                 </div>
             </div>

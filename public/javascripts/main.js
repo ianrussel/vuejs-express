@@ -2134,7 +2134,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 code: this.code,
                 name: this.name
             }).then(function (response) {
-                _this2.$router.push(_this2.name);
+                _this2.$router.push('/puta/' + _this2.name);
             }).catch(function (error) {
                 console.log(error, 'error');
             });
@@ -46697,13 +46697,7 @@ var render = function() {
             _c(
               "div",
               { staticClass: "title" },
-              [
-                _c(
-                  "router-link",
-                  { attrs: { to: { path: "/puta/" + code } } },
-                  [_c("span", [_vm._v(" " + _vm._s(code) + " ")])]
-                )
-              ],
+              [_c("router-link", { attrs: { to: { path: "/puta/" + code } } })],
               1
             )
           ])
