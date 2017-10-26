@@ -62,10 +62,6 @@ edit cheater
 ****************************/
 router.post('/editvueform',auth, cheat_controller.editCheater);
 
-// router.get('/', ensureAuthenticated, function(req, res, next) {
-//   res.render('user', { user: req.user });
-// });
-
 /****************************
 add Bug
 ****************************/

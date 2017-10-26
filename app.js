@@ -28,9 +28,10 @@ const app = express();
 const history = require('connect-history-api-fallback');
 const connect = require('connect');
 
-app.use(history({
-	verbose: true
-}));
+// app.use(history({
+// 	verbose: true,
+// 	disableDotRule: true
+// }));
 
 
 /********************************
@@ -60,6 +61,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressValidator());
+
+app.use('/index', index);
+app.use('/cheats', cheat);
+
 /***************************************
 passport
 ***************************************/
@@ -71,9 +76,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());//persistent login session
 
-app.use('/index', index);
-// app.use('/users', users);
-app.use('/cheats', cheat);
+
 // app.use('/auth', auth);
 require('./routes/routes.js')(app, passport);
 require('./config/passport')(passport); // pass passport for configuration
@@ -95,8 +98,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
 
 app.use(cors());
 module.exports = app;

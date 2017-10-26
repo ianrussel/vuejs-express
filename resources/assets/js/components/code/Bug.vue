@@ -61,7 +61,7 @@
                         <div class="inbox-content">
                             <table class="table table-striped table-advance table-hover">
                                 <tbody>
-                                    <tr data-messageid="19" v-for="bug in bugs" :title="bug.comment"  v-tippy="{position: 'top', animation: 'fade', duration: 1000, size: 'big', theme:'transparent', arrow: true}"> 
+                                    <tr data-messageid="19" v-for="bug in bugs" :title="bug.comment"  v-tippy="{position: 'top', animation: 'fade', duration: 1000, size: 'big', theme:'transparent', arrow: true}">
                                         <td class="inbox-small-cells">
                                             <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
                                                 <input type="checkbox" class="mail-checkbox" value="1">
