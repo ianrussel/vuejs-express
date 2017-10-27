@@ -32,7 +32,7 @@ const routes = [
         component: Google
     },
     {
-        path: '/*',
+        path: '*',
         component: NotFound
     }
 

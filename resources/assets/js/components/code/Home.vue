@@ -11,8 +11,8 @@
             <div class="portlet light">
                 <div class="photo">
                     <router-link  :to="{path: '/puta/' + code }">
-                        <img :src="'/images/' + code + '.png'" v-bind:alt="code" class="img-responsive" >
-                        <!-- <img :src="getMe(code)" v-bind:alt="code" class="img-responsive" > -->
+                        <img :src="'/images/' + code + '.png'" v-bind:alt="code" class="img-responsive">
+                        <!-- <img :src="getPic(code)" v-bind:alt="code" class="img-responsive" @error="this.src='images/symfony.png'"> -->
                     </router-link>
                 </div>
                 <div class="title">
@@ -25,6 +25,7 @@
     </div>
 </template>
 <script>
+    //const images = require.context('images'. false, /\.png$/)
     export default {
         data() {
             return {
@@ -47,8 +48,26 @@
 
         },
         methods: {
-            getMe(code) {
+            getPic(img) {
+                const im = '/images/' + img + '.png';
+                var xhr = new XMLHttpRequest();
+                xhr.open('HEAD', im, false);
+                xhr.send();
 
+                if (xhr.status == "404") {
+                    console.log("File doesn't exist");
+                    return '/images/default.png';
+                    //return false;
+                } else {
+                    console.log("File exists");
+                    return im
+                }
+            },
+            imageLoadError(code) {
+
+                if (code.target.src !== '/images/default.png') {
+                    code.target.src = '/images/default.png'
+                }
             }
         }
     }

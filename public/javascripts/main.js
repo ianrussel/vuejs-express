@@ -1982,6 +1982,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+//const images = require.context('images'. false, /\.png$/)
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
@@ -2004,7 +2005,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        getMe: function getMe(code) {}
+        getPic: function getPic(img) {
+            var im = '/images/' + img + '.png';
+            var xhr = new XMLHttpRequest();
+            xhr.open('HEAD', im, false);
+            xhr.send();
+
+            if (xhr.status == "404") {
+                console.log("File doesn't exist");
+                return '/images/default.png';
+                //return false;
+            } else {
+                console.log("File exists");
+                return im;
+            }
+        },
+        imageLoadError: function imageLoadError(code) {
+
+            if (code.target.src !== '/images/default.png') {
+                code.target.src = '/images/default.png';
+            }
+        }
     }
 });
 
@@ -67176,7 +67197,7 @@ var routes = [{
     path: '/google',
     component: __WEBPACK_IMPORTED_MODULE_4__components_code_Google___default.a
 }, {
-    path: '/*',
+    path: '*',
     component: NotFound
 }];
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({

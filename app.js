@@ -4,6 +4,7 @@
 
 require('dotenv').config();
 
+const fallback = require('express-history-api-fallback');
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -22,16 +23,7 @@ const index = require('./routes/index');
 const fs = require('fs');
 
 const app = express();
-/********************************
-  lets fix 404 error when refreshing browser in SPA(vuejs)
-********************************/
-const history = require('connect-history-api-fallback');
-const connect = require('connect');
 
-// app.use(history({
-// 	verbose: true,
-// 	disableDotRule: true
-// }));
 
 
 /********************************
@@ -60,10 +52,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(expressValidator());
 
 app.use('/index', index);
 app.use('/cheats', cheat);
+// app.get('/', function(req, res) {
+// 	res.render('layout.twig');
+// })
+app.use(fallback(__dirname + 'layout.twig'));
+
 
 /***************************************
 passport
@@ -73,13 +71,7 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
-app.use(passport.initialize());
-app.use(passport.session());//persistent login session
 
-
-// app.use('/auth', auth);
-require('./routes/routes.js')(app, passport);
-require('./config/passport')(passport); // pass passport for configuration
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
