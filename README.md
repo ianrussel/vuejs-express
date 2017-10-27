@@ -1,3 +1,5 @@
+git clone git@github.com:ianrussel/vuejs-express.git
+
 create a .env file project root folder, take a look for the .env-example.
 
 cd to your project folder
